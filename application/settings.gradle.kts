@@ -9,3 +9,12 @@
 
 rootProject.name = "application"
 include("app")
+
+gradle.projectsLoaded {
+    pluginManagement {
+        repositories {
+            gradlePluginPortal()
+            mavenLocal()
+        }
+    }
+}

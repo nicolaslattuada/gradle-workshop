@@ -12,8 +12,8 @@ plugins {
 
     id("com.google.cloud.tools.jib") version "2.8.0"
     id("dev.afanasev.sekret") version "0.0.7"
+    id("com.gradle.workshop.greeting") version "1.0.0"
 
-    // Apply the application plugin to add support for building a CLI application in Java.
     application
 }
 
