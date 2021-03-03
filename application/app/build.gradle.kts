@@ -51,7 +51,6 @@ tasks {
         }
     }
     register("sayHello") {
-        println("careful :-) weird behaviour")  // <-- Run during configuration phase
         doFirst {
             println("Proper place to say : hello!")
         }
@@ -79,7 +78,7 @@ tasks {
         doLast {
             generatedFileDir.mkdirs()
             for (i in 0..fileCount) {
-                println("Create file $i and sleep")
+                println("Create file $i and sleep 1")
                 sleep(1000)
                 val file = File(generatedFileDir, "${i}.txt")
                 file.writeText("content:${i}")

@@ -9,3 +9,11 @@
 
 rootProject.name = "application"
 include("app")
+
+buildCache {
+    local<DirectoryBuildCache> {
+        isEnabled = true
+        isPush = true
+        removeUnusedEntriesAfterDays = 2
+    }
+}
