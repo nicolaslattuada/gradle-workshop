@@ -10,6 +10,9 @@ plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.4.20"
 
+    id("com.google.cloud.tools.jib") version "2.8.0"
+    id("dev.afanasev.sekret") version "0.0.7"
+
     // Apply the application plugin to add support for building a CLI application in Java.
     application
 }
@@ -31,6 +34,8 @@ dependencies {
     implementation("com.google.guava:guava:29.0-jre")
 
     implementation("com.gradle.workshop:lib:1.0.0")
+
+    implementation("dev.afanasev:sekret-annotation:0.0.7")
 
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")

@@ -4,15 +4,18 @@
 package com.gradle.workshop
 // Cannot import ! is not leaked to consumers
 //import com.diogonunes.jcolor.Ansi.colorize
+import dev.afanasev.sekret.Secret
 import org.apache.commons.math3.random.RandomDataGenerator
 
-
+data class Person(val name: String, val surName: String, @Secret val password: String)
 
 class App {
     fun showSomeColor(): String {
         val library = Library()
         val someNumber = RandomDataGenerator().nextInt(0, 255)
-        return library.makeSomeColor() + "\n I can use random from math-commons $someNumber"
+        return library.makeSomeColor() +
+            "\n I can use random from math-commons $someNumber" +
+            "\n I can print some data class:" + Person("Work", "Shop-Gradle", "verysecretvalue")
     }
 }
 

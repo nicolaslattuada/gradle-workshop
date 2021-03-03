@@ -10,6 +10,6 @@ class AppTest {
     @Test fun testAppHasAGreeting() {
         val unused = "test"
         val classUnderTest = App()
-        assertNotNull(classUnderTest.greeting, "app should have a greeting")
+        assertNotNull(classUnderTest.showSomeColor(), "app should have a greeting")
     }
 }
