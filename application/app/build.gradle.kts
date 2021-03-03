@@ -17,6 +17,7 @@ plugins {
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    mavenLocal()
 }
 
 dependencies {
@@ -29,6 +30,8 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
 
+    implementation("com.gradle.workshop:lib:1.0.0")
+
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 
@@ -39,46 +42,4 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass.set("com.gradle.workshop.AppKt")
-}
-
-tasks {
-    whenTaskAdded {
-        // here we can change/disable taks behaviour on the fly
-        if (name == "IamSkipped") {
-            enabled = false
-        }
-    }
-    register("sayHello") {
-        println("careful :-) weird behaviour")  // <-- Run during configuration phase
-        doFirst {
-            println("Proper place to say : hello!")
-        }
-        doLast {
-            println("good bye...")
-        }
-    }
-    // An Exec task example
-    val listDir = register<Exec>("listDir") {
-        group = "mycustomgroup"
-        commandLine(
-            "ls", "-l"
-        )
-    }
-    val skippedTask = register("IamSkipped") {
-        doLast {
-            println("will never show")
-        }
-    }
-    register<Copy>("copyFile") {
-        group = "mycustomgroup"
-        from(file("$rootDir/app/src/test/resources/some-file.txt"))
-        into(buildDir)
-        dependsOn(listDir, skippedTask)
-    }
-}
-
-tasks.register("sayHelloAgain") {
-    doFirst {
-        println("Just showing different syntax")
-    }
 }
