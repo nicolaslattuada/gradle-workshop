@@ -9,11 +9,9 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.4.20"
-
     id("com.google.cloud.tools.jib") version "2.8.0"
     id("dev.afanasev.sekret") version "0.0.7"
     id("com.gradle.workshop.greeting") version "1.0.0"
-
     application
 }
 
@@ -21,6 +19,10 @@ repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
     mavenLocal()
+}
+
+greetingConf {
+    message = "Changed default message"
 }
 
 dependencies {

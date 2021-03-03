@@ -6,15 +6,22 @@ package com.gradle.workshop
 import org.gradle.api.Project
 import org.gradle.api.Plugin
 
-/**
- * A simple 'hello world' plugin.
- */
+open class GreetingPluginExtension {
+    var message = "Hello from GreetingPlugin"
+}
+
+private const val EXTENSION_NAME = "greetingConf"
+
 class PluginPlugin: Plugin<Project> {
     override fun apply(project: Project) {
-        // Register a task
+        project.extensions.create(
+            EXTENSION_NAME, GreetingPluginExtension::class.java
+        )
+
         project.tasks.register("greeting") { task ->
             task.doLast {
-                println("Hello from plugin 'com.gradle.workshop.greeting'")
+                val pluginExtension = project.extensions.getByName(EXTENSION_NAME) as? GreetingPluginExtension
+                println("Hello from plugin 'gradle.workshop.plugin.greeting' ${pluginExtension?.message}")
             }
         }
     }
