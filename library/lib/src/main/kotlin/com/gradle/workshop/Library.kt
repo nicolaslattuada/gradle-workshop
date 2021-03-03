@@ -5,21 +5,26 @@ package com.gradle.workshop
 
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute.BACK_COLOR
-import kotlin.random.Random
+import org.apache.commons.math3.random.RandomDataGenerator
+import java.lang.StringBuilder
 
 class Library {
     fun someLibraryMethod(): Boolean {
         return true
     }
 
-    fun showSomeColor() {
-        println("Printing color (RGB), from com.gradle.workshop:library")
+    fun makeSomeColor(): String {
+        val sb = StringBuilder()
+        sb.append("Printing color (RGB), from com.gradle.workshop:library \n")
         for (i in 0..300) {
             val bkgColor = BACK_COLOR(randomColor(), randomColor(), randomColor())
-            print(colorize("   ", bkgColor))
+            sb.append(colorize("   ", bkgColor))
         }
-        println()
+        sb.append("\n")
+        return sb.toString()
     }
 
-    private fun randomColor() = Random.nextInt(0, 255)
+    private fun randomColor(): Int {
+        return RandomDataGenerator().nextInt(0, 255)
+    }
 }

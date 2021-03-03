@@ -14,6 +14,8 @@ class LibraryTest {
 
     @Test fun testShowSomeColor() {
         val classUnderTest = Library()
-        classUnderTest.showSomeColor()
+        assertTrue {
+            classUnderTest.makeSomeColor().isNotEmpty()
+        }
     }
 }
